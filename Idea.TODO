@@ -22,4 +22,6 @@
     ☐ Perform upload or download based on the server's response and user's selection 
     ☐ Log the Transfer statuses 
 
+
+- if not exists , create the folders 
 ☐ Generate Requirements file 
