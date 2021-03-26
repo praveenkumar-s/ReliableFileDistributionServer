@@ -1,6 +1,6 @@
 
 ✔ Setup GPG Keys on new mac @done (3/26/2021, 9:21:08 PM)
-
+✔ integrate git with VSCode @done (3/26/2021, 9:35:20 PM)
 
 ☐  POST Route to Upload a file
     ☐ Uploaded Zip File will be written to a temp location 
@@ -21,3 +21,5 @@
     ☐ Based on the selection, check if the route is busy 
     ☐ Perform upload or download based on the server's response and user's selection 
     ☐ Log the Transfer statuses 
+
+☐ Generate Requirements file 
