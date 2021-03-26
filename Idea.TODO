@@ -1,0 +1,23 @@
+
+✔ Setup GPG Keys on new mac @done (3/26/2021, 9:21:08 PM)
+
+
+☐  POST Route to Upload a file
+    ☐ Uploaded Zip File will be written to a temp location 
+    ☐ Check for Busy download Flag 
+    ☐ Set Busy Upload Flag 
+    ☐ Move the zip to the targetted location 
+
+☐ GET Route to download a file
+    ☐ wait untill Busy Upload Flag is false for a File Path 
+    ☐ Set Busy Download Flag 
+    ☐ Yield the file 
+    ☐ Set Busy Download as False 
+
+☐ GET route to check the busy status of a file before upload 
+
+☐ Transfer Client
+    ☐ get params from user 1. Upload 2. Download 
+    ☐ Based on the selection, check if the route is busy 
+    ☐ Perform upload or download based on the server's response and user's selection 
+    ☐ Log the Transfer statuses 
