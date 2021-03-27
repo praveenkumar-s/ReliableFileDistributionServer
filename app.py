@@ -2,6 +2,8 @@ from flask import Flask , request , send_from_directory
 import time
 import os
 import shutil
+import socket
+
 app = Flask(__name__)
 
 
@@ -74,4 +76,4 @@ if __name__ == '__main__':
         os.mkdir('DATA')
     if(not os.path.exists('TMP')):
         os.mkdir('TMP')
-    app.run(threaded=True, port = 5001)
+    app.run(threaded=True, host= socket.gethostname() ,port = 5001)
