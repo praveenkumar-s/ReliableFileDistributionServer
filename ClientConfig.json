@@ -1,0 +1,17 @@
+{
+    "base_url":"http://192.168.88.219:5050",
+    "upload":{
+        "maintainCopy":false,
+        "alert":{
+            "recipients":"praveen.subramanian@kla-tencor.com",
+            "enabled":false            
+        }
+    },
+    "download":{
+        "alert":{
+            "recipients":"praveen.subramanian@kla-tencor.com",
+            "enabled":false            
+        }
+    }
+
+}

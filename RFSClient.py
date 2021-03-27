@@ -6,6 +6,14 @@ import zipfile
 import shutil
 import trace
 import traceback
+import json
+from types import SimpleNamespace
+
+try:
+    ClientConfig = json.load(open('ClientConfig.json'), object_hook=lambda d: SimpleNamespace(**d))
+except:
+    print("Error Loading ClientConfig.json")
+    raise "Error Loading ClientConfig.json"
 
 
 def zipdir(path, ziph):
@@ -58,15 +66,17 @@ class UploadFile():
         zipf.close
     
     def upload(self):
-        if(self.is_zip_needed):
+        if(self.is_zip_needed()):
             self.createZip()
             self.id = self.id+'.zip'
         else:
             self.id = self.targetFileorFolder
-        URL = 'http://192.168.88.219:5050/upload' #TODO: Change to config 
+        URL = ClientConfig.base_url+'/upload'
         files = {'file': open(self.id, 'rb')}
         resp = requests.post(URL+'/'+self.UploadAs , files = files)
         if(resp.status_code == 201):
+            if(not ClientConfig.upload.maintainCopy):
+                os.remove(self.id)
             return True
         else:
             print("Error while upload: "+ resp.text)
@@ -95,7 +105,7 @@ class DownloadFile():
 
     def download(self):
         try:
-            URL = 'http://192.168.88.219:5050/download/'+self.FiletoDownload
+            URL = ClientConfig.base_url+'/download/'+self.FiletoDownload
             rs = requests.get(URL)
             open(self.FiletoDownload , 'wb+').write(rs.content)
             if(self.is_Unzip_needed()):
