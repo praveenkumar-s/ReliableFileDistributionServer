@@ -70,4 +70,8 @@ def download(file_name):
         print("Download Busy Flag Cleared "+ file_name)
 
 if __name__ == '__main__':
-    app.run(threaded=True)
+    if(not os.path.exists('DATA')):
+        os.mkdir('DATA')
+    if(not os.path.exists('TMP')):
+        os.mkdir('TMP')
+    app.run(threaded=True, port = 5001)
