@@ -3,6 +3,9 @@ import sys
 import os
 import uuid
 import zipfile
+import shutil
+import trace
+import traceback
 
 def zipdir(path, ziph):
     # ziph is zipfile handle
@@ -34,7 +37,7 @@ class UploadFile():
             self.id = self.id+'.zip'
         else:
             self.id = self.targetFileorFolder
-        URL = 'http://192.168.88.219:5000/upload' #TODO: Change to config 
+        URL = 'http://192.168.88.219:5050/upload' #TODO: Change to config 
         files = {'file': open(self.id, 'rb')}
         resp = requests.post(URL+'/'+self.UploadAs , files = files)
         if(resp.status_code == 201):
@@ -44,8 +47,40 @@ class UploadFile():
             return False
     
 
-        
+class DownloadFile():
+    def __init__(self, FiletoDownload , Destination):
+        self.FiletoDownload = FiletoDownload
+        self.Destination = Destination
+        self.id = str(uuid.uuid1())
+    
+    def is_Unzip_needed(self):
+        if('.zip' in self.FiletoDownload.lower()):
+            return True
+        return False
+    
+    def unzip_file(self):
+        with zipfile.ZipFile(self.FiletoDownload, 'r') as zip_ref:
+            zip_ref.extractall(self.id)
+            for f in os.listdir(self.id+'/'+os.listdir(self.id)[0]):
+                shutil.move(os.path.join(self.id+'/'+os.listdir(self.id)[0], f), os.path.join(self.Destination, f) ) #BUG: while having sub directories , this is failing 
+            os.rmdir(self.id+'/'+os.listdir(self.id)[0])
+            ps.rmdir(self.id)
+            
 
+    def download(self):
+        try:
+            URL = 'http://192.168.88.219:5050/download/'+self.FiletoDownload
+            rs = requests.get(URL)
+            open(self.FiletoDownload , 'wb+').write(rs.content)
+            if(self.is_Unzip_needed()):
+                self.unzip_file()
+            return True
+        except:
+            print("Error Occurred in File download "+ str(sys.exc_info()))
+            return False
+
+    
+    
 
 
 if __name__ == '__main__':
@@ -59,7 +94,11 @@ if __name__ == '__main__':
 
         
     elif(choice.strip().lower()=="2"):#download
-        pass
+        file_to_download = sys.argv[2]
+        destination = sys.argv[3]
+        downObj = DownloadFile(file_to_download , destination)
+        status = downObj.download()
+        print("Download status : " + str(status))
     else:
         print("Invalid Choice! ")
         raise " Invalid Choice selected "
