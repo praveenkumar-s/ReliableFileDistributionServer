@@ -76,4 +76,4 @@ if __name__ == '__main__':
         os.mkdir('DATA')
     if(not os.path.exists('TMP')):
         os.mkdir('TMP')
-    app.run(threaded=True, host= socket.gethostname() ,port = 5001)
+    app.run(threaded=True, host= socket.gethostname() ,port = 5050)
