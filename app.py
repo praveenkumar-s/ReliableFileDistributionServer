@@ -71,6 +71,13 @@ def download(file_name):
         DOWNLOAD_BUSY[file_name]=False
         print("Download Busy Flag Cleared "+ file_name)
 
+@app.teardown_request
+def checkin_db(exc):
+    try:
+        print "Removing db session."        
+    except AttributeError:
+        pass
+
 if __name__ == '__main__':
     if(not os.path.exists('DATA')):
         os.mkdir('DATA')
