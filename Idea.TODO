@@ -3,25 +3,24 @@
 ✔ integrate git with VSCode @done (3/26/2021, 9:35:20 PM)
 
 ☐  POST Route to Upload a file
-    ☐ Uploaded Zip File will be written to a temp location 
-    ☐ Check for Busy download Flag 
-    ☐ Set Busy Upload Flag 
-    ☐ Move the zip to the targetted location 
+    ✔ Uploaded Zip File will be written to a temp location @done (3/27/2021, 10:47:36 PM)
+    ✔ Check for Busy download Flag @done (3/27/2021, 10:47:39 PM)
+    ✔ Set Busy Upload Flag @done (3/27/2021, 10:47:42 PM)
+    ✔ Move the zip to the targetted location @done (3/27/2021, 10:47:44 PM)
 
 ☐ GET Route to download a file
-    ☐ wait untill Busy Upload Flag is false for a File Path 
-    ☐ Set Busy Download Flag 
-    ☐ Yield the file 
-    ☐ Set Busy Download as False 
+    ✔ wait untill Busy Upload Flag is false for a File Path @done (3/27/2021, 10:47:49 PM)
+    ✔ Set Busy Download Flag @done (3/27/2021, 10:47:50 PM)
+    ✔ Yield the file @done (3/27/2021, 10:47:51 PM)
+    ✔ Set Busy Download as False @done (3/27/2021, 10:47:52 PM)
 
 ☐ GET route to check the busy status of a file before upload 
 
 ☐ Transfer Client
-    ☐ get params from user 1. Upload 2. Download 
-    ☐ Based on the selection, check if the route is busy 
-    ☐ Perform upload or download based on the server's response and user's selection 
+    ✔ get params from user 1. Upload 2. Download @done (3/27/2021, 10:47:59 PM)
+    ✔ Based on the selection, check if the route is busy @done (3/27/2021, 10:48:00 PM)
+    ✔ Perform upload or download based on the server's response and user's selection @done (3/27/2021, 10:48:01 PM)
     ☐ Log the Transfer statuses 
-
-
-- if not exists , create the folders 
-☐ Generate Requirements file 
+##Server:    
+✔ if not exists , create the folders @done (3/27/2021, 10:48:26 PM)
+✔ Generate Requirements file @done (3/27/2021, 10:48:44 PM)
